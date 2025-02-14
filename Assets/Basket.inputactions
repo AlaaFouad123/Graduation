@@ -1,0 +1,67 @@
+{
+    "name": "Basket",
+    "maps": [
+        {
+            "name": "MoveBasket",
+            "id": "5ad55fb6-4a02-4d08-8b52-308b792bfb7e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "c92eaaf4-cb3e-45a5-96d9-2ac5a661b4c3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "53a21995-6dcb-4760-b1c4-6305234ade6c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "dcab3316-0e7b-414b-bb98-68b3ca2c39f1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e8222f13-cf4e-4a5c-ba0a-97da70338877",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b6a79c8d-ceea-4e24-8848-4f98e2746604",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
