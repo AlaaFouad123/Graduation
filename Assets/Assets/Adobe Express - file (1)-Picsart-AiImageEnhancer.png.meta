@@ -1,0 +1,616 @@
+fileFormatVersion: 2
+guid: 2c1875569732bd848b76e1ea07383940
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 457
+        width: 271
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ab6a5c36bfd814f9f4e8ba4be32c1e
+      internalID: 104092749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_1
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 457
+        width: 274
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f4a4f594e835d448860e26bf741c2f
+      internalID: -901437272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_2
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 458
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9d7a2c7dae91245b9da97237cf6157
+      internalID: -1978908411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_3
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 458
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942b74702225bd34683f6c1ea2cf02f4
+      internalID: -1674221341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_4
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 458
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a64acf2fd50684d9bb9c236d3f0559
+      internalID: -2003326876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_5
+      rect:
+        serializedVersion: 2
+        x: 1508
+        y: 457
+        width: 272
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c15fea38e4b88d43adf14fe2315ab35
+      internalID: -1712867791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_6
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 458
+        width: 273
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2a3ebd0a00dc942bf557b0c3a3505e
+      internalID: 308029128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_7
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 458
+        width: 274
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7c1ea680f55714e8a5dbd9f72b3209
+      internalID: -170266427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_8
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 458
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa1b91314f0d8545a1d1901946e728c
+      internalID: 688967657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_9
+      rect:
+        serializedVersion: 2
+        x: 2670
+        y: 458
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c0e427d1d5b4f4baeeffbba5af4639
+      internalID: 754742290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_10
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 108
+        width: 276
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c391a8fcdfe2642a397950e23ed310
+      internalID: 1278075334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_11
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 108
+        width: 271
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2189ef8a0063dd45beaa9734c1590bc
+      internalID: 1377977089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_12
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 108
+        width: 275
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108316bc8cc92ad4ba4a77a655162837
+      internalID: 119033591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_13
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 108
+        width: 270
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2104535e1c90f646bf2160b7f9264ff
+      internalID: 209450324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_14
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 108
+        width: 271
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3dad3fe07acc9047b1270f97657aee0
+      internalID: 1194673970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_15
+      rect:
+        serializedVersion: 2
+        x: 1508
+        y: 108
+        width: 272
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfda7a564272c74c9c1faa51132b67b
+      internalID: -1932487828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_16
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 109
+        width: 274
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade88489b5b2dfb4584d042e03991d83
+      internalID: -1651403328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_17
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 109
+        width: 273
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9e4a03d92c3ca44b319f009f212411
+      internalID: -738627448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_18
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 109
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe850e10aeb9974468a6636c425f3d79
+      internalID: -432669517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Adobe Express - file (1)-Picsart-AiImageEnhancer_19
+      rect:
+        serializedVersion: 2
+        x: 2670
+        y: 109
+        width: 272
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 497dd90551a11434f84d376818a07c8a
+      internalID: -7964757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_0: 104092749
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_1: -901437272
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_10: 1278075334
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_11: 1377977089
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_12: 119033591
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_13: 209450324
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_14: 1194673970
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_15: -1932487828
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_16: -1651403328
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_17: -738627448
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_18: -432669517
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_19: -7964757
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_2: -1978908411
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_3: -1674221341
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_4: -2003326876
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_5: -1712867791
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_6: 308029128
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_7: -170266427
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_8: 688967657
+      Adobe Express - file (1)-Picsart-AiImageEnhancer_9: 754742290
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
