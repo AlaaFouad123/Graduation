@@ -6,14 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 4755b35b590504809a7525fd2109c2e2
+    path: Assets/Scenes/Fouad/Entry.unity
+    guid: 75121f24e943b374897bad1018f25368
   - enabled: 1
     path: Assets/Scenes/Fouad/Sign in.unity
     guid: 2bd9ef7257a021d4b9606d2249a28a5d
   - enabled: 1
-    path: Assets/Scenes/Fouad/SubjectsPage.unity
-    guid: 1e76172ca0ff102489646dbb05f3f90d
+    path: Assets/Scenes/Alaa&Alaa/Register.unity
+    guid: 40831d272bd9ef64aafe3ae76ad799f0
+  - enabled: 1
+    path: Assets/Scenes/Fouad/Sub.unity
+    guid: 80fccb7621a59bf409d3f58fd8d4511c
+  - enabled: 1
+    path: Assets/Scenes/Fouad/SkipSub.unity
+    guid: d73e94859724d924c8ee1586887212a7
+  - enabled: 1
+    path: Assets/Scenes/Fouad/AppleGame.unity
+    guid: 9f2950deb97f92c45982dc54745a0f84
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
