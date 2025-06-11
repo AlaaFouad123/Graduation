@@ -2,7 +2,6 @@ using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.Tutorials.Core.Editor;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -25,6 +24,7 @@ public class Registeration : MonoBehaviour
     {
         loadingIndicator.SetActive(false);
     }
+
     public async void OnRegisterButtonClicked()
     {
         loadingIndicator.SetActive(true);
@@ -38,7 +38,7 @@ public class Registeration : MonoBehaviour
 
     public async Task Register()
     {
-        resetErrors();
+        ResetErrors();
 
         var user = new UserRegister
         {
@@ -58,7 +58,7 @@ public class Registeration : MonoBehaviour
         }
     }
 
-    public void resetErrors()
+    public void ResetErrors()
     {
         UserNameError.text = "";
         EmailError.text = "";
@@ -70,22 +70,22 @@ public class Registeration : MonoBehaviour
     {
         if (!Validation.CheckEmail(user.email))
         {
-            EmailError.text = "email is required";
+            EmailError.text = "Email is required.";
         }
 
         if (!Validation.CheckUserName(user.username))
         {
-            UserNameError.text = "username is required,at least 4 charcters";
+            UserNameError.text = "Username is required (at least 4 characters).";
         }
 
         if (!Validation.CheckPassword(user.password))
         {
-            PasswordError.text = "password is required";
+            PasswordError.text = "Password is required.";
         }
 
         if (!Validation.CheckPhone(user.phoneNumber))
         {
-            PhoneError.text = "phone is required";
+            PhoneError.text = "Phone number is required.";
         }
     }
 
@@ -93,7 +93,6 @@ public class Registeration : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(user);
 
-        // Create web request
         using (UnityWebRequest request = new UnityWebRequest($"{BaseAPIURL}/Register", "POST"))
         {
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
@@ -105,55 +104,50 @@ public class Registeration : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-
                 HandleErrors(request);
             }
             else
             {
-                SceneManager.LoadScene("Sign in");
+                SceneManager.LoadScene("Sign in"); // Make sure the scene is added to Build Settings
             }
         }
     }
 
     public void HandleErrors(UnityWebRequest request)
     {
-        Debug.LogError("Registeration failed: " + request.downloadHandler.text);
+        Debug.LogError("Registration failed: " + request.downloadHandler.text);
+        string response = request.downloadHandler.text;
 
-        if (request.downloadHandler.text.Contains("email", StringComparison.InvariantCultureIgnoreCase))
+        if (response.Contains("email", StringComparison.InvariantCultureIgnoreCase))
         {
-            EmailError.text = "";
-            EmailError.text = request.downloadHandler.text
-                .TrimStart('"', '[')
-                .TrimEnd('"', ']');
+            EmailError.text = response.Trim('"', '[', ']');
         }
-        if (request.downloadHandler.text.Contains("password", StringComparison.InvariantCultureIgnoreCase))
+
+        if (response.Contains("password", StringComparison.InvariantCultureIgnoreCase))
         {
-            var error = request.downloadHandler.text;
-            PasswordError.text = error
-                .TrimStart(" '\"' [ register failed : ".ToCharArray())
-                .TrimEnd('"', ']')
+            PasswordError.text = response
+                .Trim('"', '[', ']')
                 .Split(',')[0];
         }
-        if (request.downloadHandler.text.Contains("phone", StringComparison.InvariantCultureIgnoreCase))
+
+        if (response.Contains("phone", StringComparison.InvariantCultureIgnoreCase))
         {
             PhoneError.text = "Invalid phone number.";
         }
-        if (request.downloadHandler.text.Contains("username", StringComparison.InvariantCultureIgnoreCase))
+
+        if (response.Contains("username", StringComparison.InvariantCultureIgnoreCase))
         {
-            UserNameError.text = "Username Already Taken,try again";
+            UserNameError.text = "Username already taken. Try again.";
         }
 
-        else
+        if (string.IsNullOrEmpty(EmailError.text) && string.IsNullOrEmpty(UserNameError.text))
         {
-            EmailError.text = "Registeration failed. Please try again.";
-            PasswordError.text = "";
+            EmailError.text = "Registration failed. Please try again.";
         }
-
     }
 }
 
-
-
+[Serializable]
 public class UserRegister
 {
     public string email;
@@ -165,10 +159,9 @@ public class UserRegister
     {
         return $"{email}\n{username}\n{phoneNumber}\n{password}";
     }
-
 }
 
-public class Validation
+public static class Validation
 {
     public static bool IsValid(UserRegister user)
     {
@@ -178,16 +171,15 @@ public class Validation
                CheckPassword(user.password);
     }
 
+    public static bool CheckEmail(string email) =>
+        !string.IsNullOrWhiteSpace(email) && Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
 
-    public static bool CheckEmail(string email) => email.IsNotNullOrEmpty();
-    public static bool CheckPassword(string password) => password.IsNotNullOrEmpty();
-    public static bool CheckPhone(string phone) => phone.IsNotNullOrEmpty();
+    public static bool CheckPassword(string password) =>
+        !string.IsNullOrWhiteSpace(password) && password.Length >= 6;
+
+    public static bool CheckPhone(string phone) =>
+        !string.IsNullOrWhiteSpace(phone) && Regex.IsMatch(phone, @"^[0-9]{10,15}$");
+
     public static bool CheckUserName(string username) =>
-        username.IsNotNullOrEmpty() && Regex.IsMatch(username, @"[a-zA-Z]{4}");
-
-
-
-
+        !string.IsNullOrWhiteSpace(username) && username.Length >= 4;
 }
-
-
