@@ -61,6 +61,12 @@ public class AuthenticationWithAPI : MonoBehaviour
 			else
 			{
 				Debug.Log("Login response: " + request.downloadHandler.text);
+
+				var tokenData = TokenDecoder.Decode(request.downloadHandler.text);
+				SharedPrefManager.SaveData("studentId", tokenData.StudentId);
+				SharedPrefManager.SaveData("name", tokenData.Name);
+				Debug.Log(tokenData);
+
 				EmailError.text = "";
 				PasswordError.text = "";
 				SceneManager.LoadScene("SkipSub");
@@ -68,6 +74,9 @@ public class AuthenticationWithAPI : MonoBehaviour
 
 			}
 		}
+
+
+
 	}
 
 }

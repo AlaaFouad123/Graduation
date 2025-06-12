@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 public class StartAR : MonoBehaviour
 {
 	public TMP_Text levelName;
+	public ScoreManager scoreManager;
+
 
 	void Start()
 	{
 		Debug.Log(LevelManager.Level);
 		levelName.text = LevelManager.Level;
+
+		var StudentId = SharedPrefManager.GetData<string>("studentId");
+		Debug.Log($"id from shared pred {StudentId}");
+		scoreManager.GetStudentScore(int.Parse(StudentId));
 	}
 
 	public void StartLevelWithAR()

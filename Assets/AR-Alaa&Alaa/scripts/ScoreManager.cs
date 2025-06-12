@@ -1,11 +1,13 @@
-
+﻿
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ScoreManager : MonoBehaviour
 {
 	public string BaseAPIURL = "https://timonoapp.runasp.net/XR_Timono_App";
+	[SerializeField] TMP_Text CurrentScore;
 
 
 	public void UpdateStudentScore(int stdId, int score)
@@ -15,7 +17,9 @@ public class ScoreManager : MonoBehaviour
 
 	private IEnumerator UpdateStudentScoreCoroutine(int stdId, int score)
 	{
-		string url = $"{BaseAPIURL}/Student/updateScore/{stdId}/{score + 10}";
+		var newScore = score + 10;
+		string url = $"{BaseAPIURL}/Student/updateScore/{stdId}/{newScore}";
+		Debug.Log(score + "  ttttt" + " " + url);
 
 		using (UnityWebRequest request = UnityWebRequest.Get(url))
 		{
@@ -24,6 +28,8 @@ public class ScoreManager : MonoBehaviour
 			if (request.result == UnityWebRequest.Result.Success)
 			{
 				Debug.Log("Student score: " + request.downloadHandler.text);
+				SharedPrefManager.SaveData("score", newScore);
+				CurrentScore.text = newScore.ToString();
 			}
 			else
 			{
@@ -49,8 +55,7 @@ public class ScoreManager : MonoBehaviour
 			if (request.result == UnityWebRequest.Result.Success)
 			{
 				Debug.Log("Student score: " + request.downloadHandler.text);
-				PlayerPrefs.SetInt("score", int.Parse(request.downloadHandler.text.ToString()));
-				PlayerPrefs.Save();
+				SharedPrefManager.SaveData("score", int.Parse(request.downloadHandler.text));
 			}
 			else
 			{

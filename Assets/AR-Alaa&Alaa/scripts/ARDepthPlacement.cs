@@ -39,10 +39,10 @@ public class SendARFrame : MonoBehaviour
 		Debug.Log("AR Frame Processing Started");
 
 
+
 		if (Refresh == null)
 		{
 			Refresh = GameObject.Find("Refresh")?.GetComponent<Button>();
-
 		}
 		Refresh.onClick.AddListener(OnRefreshButtonClicked);
 

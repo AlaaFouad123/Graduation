@@ -27,6 +27,7 @@ public class InputHandler : MonoBehaviour
 
 	[SerializeField] TMP_InputField inputField;
 	[SerializeField] TMP_Text resultText;
+	[SerializeField] TMP_Text CurrentScore;
 
 	private int currentModelIndex = 0;
 	private bool isMoving = false;
@@ -41,13 +42,22 @@ public class InputHandler : MonoBehaviour
 
 	[SerializeField] private XROrigin xrOrigin;
 
+	private int StudentId;
 
 
 
 
 	void Start()
 	{
+		if (scoreManager == null)
+			scoreManager = FindObjectOfType<ScoreManager>();
 
+		StudentId = int.Parse(SharedPrefManager.GetData<string>("studentId").ToString());
+
+		if (models[0].name.ToLower().StartsWith("a"))
+		{
+			CurrentScore.text = SharedPrefManager.GetData<int>("score").ToString();
+		}
 
 		if (lastModel != null)
 		{
@@ -82,10 +92,9 @@ public class InputHandler : MonoBehaviour
 			isMoving = true;
 			if (scoreManager != null)
 			{
-				scoreManager.GetStudentScore(1);
 
-				int score = PlayerPrefs.GetInt("score", -1);
-				scoreManager.UpdateStudentScore(1, score);
+				int score = SharedPrefManager.GetData<int>("score");
+				scoreManager.UpdateStudentScore(StudentId, score);
 
 			}
 		}
