@@ -3,22 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class ContinueLevels : MonoBehaviour
 {
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	//void Start()
-	//{
-
-	//}
-
-	// Update is called once per frame
-	//void Update()
-	//{
-
-	//}
-
-	//public void GoToNextLevel()
-	//{
-	//	StartCoroutine(NextLevel());
-	//}
 
 	public void GoToNextLevel()
 	{
@@ -51,4 +35,11 @@ public class ContinueLevels : MonoBehaviour
 				//    break;
 		}
 	}
+
+
+	private void updateProgress()
+	{
+
+	}
+
 }

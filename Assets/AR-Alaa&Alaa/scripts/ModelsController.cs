@@ -19,6 +19,9 @@ public class InputHandler : MonoBehaviour
 	public AudioClip tryAgainAudioClip;
 	public AudioClip cheerAudioClip;
 
+	public ScoreManager scoreManager;
+
+
 	public Vector3 rotationVector;
 	public float moveSpeed = 2.0f;
 
@@ -44,6 +47,8 @@ public class InputHandler : MonoBehaviour
 
 	void Start()
 	{
+
+
 		if (lastModel != null)
 		{
 			lastModel.SetActive(false);
@@ -75,6 +80,14 @@ public class InputHandler : MonoBehaviour
 
 			HideInputField();
 			isMoving = true;
+			if (scoreManager != null)
+			{
+				scoreManager.GetStudentScore(1);
+
+				int score = PlayerPrefs.GetInt("score", -1);
+				scoreManager.UpdateStudentScore(1, score);
+
+			}
 		}
 		else
 		{

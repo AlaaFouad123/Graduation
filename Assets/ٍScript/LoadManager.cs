@@ -7,4 +7,17 @@ public class LoadManager : MonoBehaviour
 		SceneManager.LoadScene(sceneName);
 	}
 
+
+	public void LoadStartAR(string levelName)
+	{
+		LevelManager.Level = levelName;
+		SceneManager.LoadScene("StartAR");
+
+	}
+
+}
+
+public static class LevelManager
+{
+	public static string Level { get; set; }
 }

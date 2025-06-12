@@ -202,16 +202,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 112114497}
-        m_TargetAssemblyTypeName: ContinueLevels, Assembly-CSharp
-        m_MethodName: GoToNextLevel
-        m_Mode: 1
+      - m_Target: {fileID: 1354843811}
+        m_TargetAssemblyTypeName: LoadManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LevelsEnglish
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &112114495
@@ -349,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774117020}
   m_Layer: 5
-  m_Name: WriteWords
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,7 +582,8 @@ MonoBehaviour:
   m_text: back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02744332f019b1941940b450ad36adf4, type: 2}
-  m_sharedMaterial: {fileID: -4611160723261946201, guid: 02744332f019b1941940b450ad36adf4, type: 2}
+  m_sharedMaterial: {fileID: -4611160723261946201, guid: 02744332f019b1941940b450ad36adf4,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -670,6 +671,7 @@ GameObject:
   - component: {fileID: 1354843809}
   - component: {fileID: 1354843808}
   - component: {fileID: 1354843807}
+  - component: {fileID: 1354843811}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -762,6 +764,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1354843811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354843806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9d07fe378b4464398dc1f293ab2e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1570783032
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +836,8 @@ MonoBehaviour:
   m_text: do you want to continue ?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02744332f019b1941940b450ad36adf4, type: 2}
-  m_sharedMaterial: {fileID: -4611160723261946201, guid: 02744332f019b1941940b450ad36adf4, type: 2}
+  m_sharedMaterial: {fileID: -4611160723261946201, guid: 02744332f019b1941940b450ad36adf4,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -958,7 +973,8 @@ MonoBehaviour:
   m_text: continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02744332f019b1941940b450ad36adf4, type: 2}
-  m_sharedMaterial: {fileID: -4611160723261946201, guid: 02744332f019b1941940b450ad36adf4, type: 2}
+  m_sharedMaterial: {fileID: -4611160723261946201, guid: 02744332f019b1941940b450ad36adf4,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

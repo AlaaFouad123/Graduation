@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alaa&Alaa/A.unity
     guid: fd04dfa63ead08848bec5238e16949be
+  - enabled: 1
+    path: Assets/Scenes/Fouad/LevelsEnglish.unity
+    guid: 3f3ff6ad9ead71a44b91b205162e2587
+  - enabled: 1
+    path: Assets/Scenes/Fouad/StartAR.unity
+    guid: 1e76172ca0ff102489646dbb05f3f90d
+  - enabled: 1
+    path: Assets/Scenes/Alaa&Alaa/dialog.unity
+    guid: 1c6f6eb605b33aa41b8d16c404720528
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
