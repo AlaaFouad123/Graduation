@@ -27,13 +27,37 @@ public class SendARFrame : MonoBehaviour
 
 	void OnEnable()
 	{
-		var test = FindFirstObjectByType<XROrigin>();
-		if (test == null)
+		StartCoroutine(StartAPI());
+
+	}
+
+	private IEnumerator StartAPI()
+	{
+		yield return null;
+		yield return null;
+
+		XROrigin xrOrigin = null;
+
+		for (int i = 0; i < 5; i++)
 		{
-			Debug.LogError("XROrigin not found in the scene. Please ensure it is present.");
-			return;
+			xrOrigin = FindFirstObjectByType<XROrigin>();
+			if (xrOrigin != null) break;
+			yield return null;
 		}
-		raycastManager = test.GetComponent<ARRaycastManager>();
+
+		if (xrOrigin == null)
+		{
+			Debug.LogError("XROrigin not found after waiting. Cannot continue AR setup.");
+			yield break;
+		}
+
+		raycastManager = xrOrigin.GetComponent<ARRaycastManager>();
+		if (raycastManager == null)
+		{
+			Debug.LogError("ARRaycastManager not found on XROrigin.");
+			yield break;
+		}
+
 
 		processingCoroutine = StartCoroutine(ProcessFramesUntilResponse());
 		Debug.Log("AR Frame Processing Started");
@@ -44,10 +68,12 @@ public class SendARFrame : MonoBehaviour
 		{
 			Refresh = GameObject.Find("Refresh")?.GetComponent<Button>();
 		}
-		Refresh.onClick.AddListener(OnRefreshButtonClicked);
+		else ////////edit here
+		{
+			Refresh.onClick.AddListener(OnRefreshButtonClicked);
 
-		Refresh.gameObject.SetActive(false);
-
+			Refresh.gameObject.SetActive(false);
+		}
 	}
 
 	IEnumerator ProcessFramesUntilResponse()
@@ -192,6 +218,12 @@ public class SendARFrame : MonoBehaviour
 	void RaycastAndPlace(Vector2 screenPoint)
 	{
 		Debug.Log(raycastManager == null);
+		if (Camera.main == null)
+		{
+			Debug.LogWarning("⚠️ Camera.main is not available. Waiting for camera initialization.");
+			Refresh.gameObject.SetActive(true);
+			return;
+		}
 		if (raycastManager.Raycast(screenPoint, hits, TrackableType.Planes))
 		{
 			Pose hitPose = hits[0].pose;

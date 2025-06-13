@@ -20,6 +20,7 @@ public class InputHandler : MonoBehaviour
 	public AudioClip cheerAudioClip;
 
 	public ScoreManager scoreManager;
+	public ARSetupInOtherLevels ARSetupInOtherLevels;
 
 
 	public Vector3 rotationVector;
@@ -33,6 +34,8 @@ public class InputHandler : MonoBehaviour
 	private bool isMoving = false;
 
 	public Button submitButton;
+	public Button refreshBtn;
+
 
 	public RobotAudio robotAudio;
 
@@ -45,10 +48,37 @@ public class InputHandler : MonoBehaviour
 	private int StudentId;
 
 
+	private void assingPrefabComponent()
+	{
+		if (!ARInstance.arAlreadyInstantiated && ARInstance.arSetupPrefab == null)
+		{
+			Debug.Log("setup from models");
+			ARSetupInOtherLevels.SetupAR();
 
+			Debug.Log(ARInstance.arAlreadyInstantiated + " AR instance already instantiated.");
+			var robot = FindObjectOfType<SendARFrame>();
+			if (robot != null)
+			{
+				Debug.Log("Assigning SendARFrame component to robot.");
+				robot.Refresh = refreshBtn;
+			}
+
+			var score = FindObjectOfType<ScoreManager>();
+			if (score != null)
+			{
+				/////////////
+				Debug.Log("Assigning ScoreManager component to score.");
+				score.CurrentScore = GameObject.Find("CurrentScore").GetComponent<TMP_Text>();
+			}
+
+		}
+	}
 
 	void Start()
 	{
+		assingPrefabComponent();
+
+
 		if (scoreManager == null)
 			scoreManager = FindObjectOfType<ScoreManager>();
 
@@ -94,7 +124,11 @@ public class InputHandler : MonoBehaviour
 			{
 
 				int score = SharedPrefManager.GetData<int>("score");
-				scoreManager.UpdateStudentScore(StudentId, score);
+				scoreManager.UpdateStudentScore(StudentId, score, newScore =>
+				{
+					if (CurrentScore != null)
+						CurrentScore.text = newScore.ToString();
+				});
 
 			}
 		}

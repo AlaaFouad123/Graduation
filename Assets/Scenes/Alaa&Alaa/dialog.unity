@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 112114495}
   - component: {fileID: 112114494}
   - component: {fileID: 112114497}
+  - component: {fileID: 112114498}
   m_Layer: 5
   m_Name: back
   m_TagString: Untagged
@@ -202,10 +203,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1354843811}
-        m_TargetAssemblyTypeName: LoadManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 112114497}
+        m_TargetAssemblyTypeName: ContinueLevels, Assembly-CSharp
+        m_MethodName: BackToLevels
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -264,7 +265,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9766d7e1436205c44ba884b29bf9824a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ARSetupInOtherLevels: {fileID: 112114498}
+  arSetupPrefab: {fileID: 5902624156445736567, guid: 9ca22cab957da4f418f64083c7059417,
+    type: 3}
   progressManager: {fileID: 0}
+--- !u!114 &112114498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112114492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303e0bb79f5a6e142b43cb61ba501ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arSetupPrefab: {fileID: 5902624156445736567, guid: 9ca22cab957da4f418f64083c7059417,
+    type: 3}
 --- !u!1 &696537005
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9766d7e1436205c44ba884b29bf9824a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ARSetupInOtherLevels: {fileID: 0}
+  arSetupPrefab: {fileID: 0}
   progressManager: {fileID: 896322064}
 --- !u!114 &896322064
 MonoBehaviour:

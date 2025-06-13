@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,15 +8,15 @@ using UnityEngine.Networking;
 public class ScoreManager : MonoBehaviour
 {
 	public string BaseAPIURL = "https://timonoapp.runasp.net/XR_Timono_App";
-	[SerializeField] TMP_Text CurrentScore;
+	[SerializeField] public TMP_Text CurrentScore; //edit here 
 
 
-	public void UpdateStudentScore(int stdId, int score)
+	public void UpdateStudentScore(int stdId, int score, Action<int> onComplete)
 	{
-		StartCoroutine(UpdateStudentScoreCoroutine(stdId, score));
+		StartCoroutine(UpdateStudentScoreCoroutine(stdId, score, onComplete));
 	}
 
-	private IEnumerator UpdateStudentScoreCoroutine(int stdId, int score)
+	private IEnumerator UpdateStudentScoreCoroutine(int stdId, int score, Action<int> onComplete)
 	{
 		var newScore = score + 10;
 		string url = $"{BaseAPIURL}/Student/updateScore/{stdId}/{newScore}";
@@ -29,7 +30,8 @@ public class ScoreManager : MonoBehaviour
 			{
 				Debug.Log("Student score: " + request.downloadHandler.text);
 				SharedPrefManager.SaveData("score", newScore);
-				CurrentScore.text = newScore.ToString();
+				onComplete(newScore);
+				//CurrentScore.text = newScore.ToString();
 			}
 			else
 			{
