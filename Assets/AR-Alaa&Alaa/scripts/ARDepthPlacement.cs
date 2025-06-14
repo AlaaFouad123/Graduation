@@ -198,7 +198,7 @@ public class SendARFrame : MonoBehaviour
 			}
 		}
 	}
-
+	//c 
 	IEnumerator RaycastAndPlace(Vector2 screenPoint)
 	{
 		Debug.Log(raycastManager == null);
@@ -220,12 +220,13 @@ public class SendARFrame : MonoBehaviour
 				}
 				placedObjects.Add(placedObj);
 
-				if (!objectPrefab.gameObject.name.Contains("Robot"))
+				if (CheckLevels() && !placedObj.gameObject.name.Contains("Robot"))//a //robot
 				{
 					yield return new WaitForSeconds(15f);
 					placedObj.SetActive(false);
-				}
+					LoadDialog();
 
+				}
 
 
 
@@ -239,6 +240,30 @@ public class SendARFrame : MonoBehaviour
 		}
 	}
 
+	private bool CheckLevels()
+	{
+		var controllerObject = GameObject.Find("ModelsController");
+		if (controllerObject != null)
+		{
+			InputHandler controller = controllerObject.GetComponent<InputHandler>();
+			if (controller != null)
+			{
+				List<GameObject> models = controller.models;
+				if (models[0].name.ToLower().StartsWith("c") || models[0].name.ToLower().StartsWith("d"))
+				{
+					return true;
+				}
+				return false;
+
+			}
+			else
+			{
+				Debug.LogError("ModelsController script not found on GameObject.");
+				return false;
+			}
+		}
+		return false;
+	}
 
 	private void LoadDialog()
 	{
