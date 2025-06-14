@@ -53,10 +53,8 @@ public class InputHandler : MonoBehaviour
 
 		StudentId = int.Parse(SharedPrefManager.GetData<string>("studentId").ToString());
 
-		if (models[0].name.ToLower().StartsWith("a"))
-		{
-			CurrentScore.text = SharedPrefManager.GetData<int>("score").ToString();
-		}
+		CurrentScore.text = SharedPrefManager.GetData<int>("score").ToString();
+
 
 		if (lastModel != null)
 		{
