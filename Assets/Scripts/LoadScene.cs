@@ -15,4 +15,14 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(5);
     }
+
+    public void LoadRegister()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void LoadSignin()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
