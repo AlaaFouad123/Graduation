@@ -11,4 +11,8 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+    public void LoadAppleGame()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
