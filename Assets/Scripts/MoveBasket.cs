@@ -1,20 +1,31 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MoveBasket : MonoBehaviour
 {
     public float speed = 6f;
-    private float moveInput;
+    private Camera mainCamera;
+    private float screenHalfWidthInWorldUnits;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+        float halfBasketWidth = transform.localScale.x / 2f;
+        screenHalfWidthInWorldUnits = mainCamera.orthographicSize * mainCamera.aspect - halfBasketWidth;
+    }
 
     private void Update()
     {
-        // تحريك السلة بناءً على الإدخال
-        transform.Translate(new Vector3(moveInput, 0, 0) * speed * Time.deltaTime);
-    }
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0); // First touch (index 0)
+            Vector3 touchPosition = mainCamera.ScreenToWorldPoint(touch.position);
+            Vector3 targetPosition = new Vector3(touchPosition.x, transform.position.y, transform.position.z);
 
-    // دالة لالتقاط الإدخال من Input System
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<float>(); // سيعطي -1 عند الضغط على اليسار، 1 عند الضغط على اليمين، و 0 عند عدم الضغط
+            // Clamp to screen bounds
+            targetPosition.x = Mathf.Clamp(targetPosition.x, -screenHalfWidthInWorldUnits, screenHalfWidthInWorldUnits);
+
+            // Smoothly move the basket
+            transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+        }
     }
 }
