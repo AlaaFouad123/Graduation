@@ -1,14 +1,13 @@
 ﻿
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ScoreManager : MonoBehaviour
 {
 	public string BaseAPIURL = "https://timonoapp.runasp.net/XR_Timono_App";
-	[SerializeField] public TMP_Text CurrentScore; //edit here 
+	//[SerializeField] public TMP_Text CurrentScore; //edit here 
 
 
 	public void UpdateStudentScore(int stdId, int score, Action<int> onComplete)

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -13,6 +14,11 @@ public class SendARFrame : MonoBehaviour
 	[SerializeField] private string apiUrl = "https://Esraa101-ModelML.hf.space/process_frame/";
 	[SerializeField] public GameObject objectPrefab;
 	[SerializeField] private ARRaycastManager raycastManager;
+	public AudioClip? lastAudio;
+	public AudioSource audioSource;
+
+
+
 
 	private List<ARRaycastHit> hits = new();
 	private List<GameObject> placedObjects = new();
@@ -27,53 +33,31 @@ public class SendARFrame : MonoBehaviour
 
 	void OnEnable()
 	{
-		StartCoroutine(StartAPI());
-
-	}
-
-	private IEnumerator StartAPI()
-	{
-		yield return null;
-		yield return null;
-
-		XROrigin xrOrigin = null;
-
-		for (int i = 0; i < 5; i++)
+		var test = FindFirstObjectByType<XROrigin>();
+		if (test == null)
 		{
-			xrOrigin = FindFirstObjectByType<XROrigin>();
-			if (xrOrigin != null) break;
-			yield return null;
+			Debug.LogError("XROrigin not found in the scene. Please ensure it is present.");
+			return;
 		}
-
-		if (xrOrigin == null)
-		{
-			Debug.LogError("XROrigin not found after waiting. Cannot continue AR setup.");
-			yield break;
-		}
-
-		raycastManager = xrOrigin.GetComponent<ARRaycastManager>();
-		if (raycastManager == null)
-		{
-			Debug.LogError("ARRaycastManager not found on XROrigin.");
-			yield break;
-		}
-
+		//if (raycastManager == null)
+		raycastManager = test.GetComponent<ARRaycastManager>();
 
 		processingCoroutine = StartCoroutine(ProcessFramesUntilResponse());
 		Debug.Log("AR Frame Processing Started");
 
 
 
-		if (Refresh == null)
-		{
-			Refresh = GameObject.Find("Refresh")?.GetComponent<Button>();
-		}
-		else ////////edit here
+		//if (Refresh == null)
+		//{
+		//	Refresh = GameObject.Find("Refresh")?.GetComponent<Button>();
+		//}
+		if (Refresh != null)
 		{
 			Refresh.onClick.AddListener(OnRefreshButtonClicked);
 
 			Refresh.gameObject.SetActive(false);
 		}
+
 	}
 
 	IEnumerator ProcessFramesUntilResponse()
@@ -208,22 +192,16 @@ public class SendARFrame : MonoBehaviour
 					float screenY = y * (Screen.height / (float)height);
 					Vector2 screenPoint = new(screenX, screenY);
 
-					RaycastAndPlace(screenPoint);
+					StartCoroutine(RaycastAndPlace(screenPoint));
 					return;
 				}
 			}
 		}
 	}
 
-	void RaycastAndPlace(Vector2 screenPoint)
+	IEnumerator RaycastAndPlace(Vector2 screenPoint)
 	{
 		Debug.Log(raycastManager == null);
-		if (Camera.main == null)
-		{
-			Debug.LogWarning("⚠️ Camera.main is not available. Waiting for camera initialization.");
-			Refresh.gameObject.SetActive(true);
-			return;
-		}
 		if (raycastManager.Raycast(screenPoint, hits, TrackableType.Planes))
 		{
 			Pose hitPose = hits[0].pose;
@@ -235,8 +213,22 @@ public class SendARFrame : MonoBehaviour
 				);
 
 				GameObject placedObj = Instantiate(objectPrefab, hitPose.position, rotation);
-
+				if (audioSource != null)
+				{
+					Debug.Log("play");
+					PlaylastAudio();
+				}
 				placedObjects.Add(placedObj);
+
+				if (!objectPrefab.gameObject.name.Contains("Robot"))
+				{
+					yield return new WaitForSeconds(15f);
+					placedObj.SetActive(false);
+					SceneManager.LoadScene("dialog");
+				}
+
+
+
 
 			}
 		}
@@ -246,6 +238,16 @@ public class SendARFrame : MonoBehaviour
 			Refresh.gameObject.SetActive(true);
 
 		}
+	}
+
+	void PlaylastAudio()
+	{
+		if (lastAudio != null)
+		{
+			//yield return new WaitForSeconds(2);
+			audioSource.PlayOneShot(lastAudio);
+		}
+
 	}
 	public GameObject GetLastPlacedObject()
 	{

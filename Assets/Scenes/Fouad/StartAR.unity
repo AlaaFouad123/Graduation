@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 497211512}
   - component: {fileID: 497211511}
   m_Layer: 0
-  m_Name: 2DEventSystem
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 1814735501}
   - component: {fileID: 1814735504}
   m_Layer: 0
-  m_Name: 2DCamera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1266,7 +1266,6 @@ GameObject:
   - component: {fileID: 2064643318}
   - component: {fileID: 2064643319}
   - component: {fileID: 2064643320}
-  - component: {fileID: 2064643321}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1375,7 +1374,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: {fileID: 946854049}
   scoreManager: {fileID: 2064643320}
-  aRSetupInOtherLevels: {fileID: 2064643321}
 --- !u!114 &2064643319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,21 +1399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseAPIURL: https://timonoapp.runasp.net/XR_Timono_App
-  CurrentScore: {fileID: 0}
---- !u!114 &2064643321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064643313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 303e0bb79f5a6e142b43cb61ba501ede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arSetupPrefab: {fileID: 5902624156445736567, guid: 9ca22cab957da4f418f64083c7059417,
-    type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

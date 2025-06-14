@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,7 +19,6 @@ public class InputHandler : MonoBehaviour
 	public AudioClip cheerAudioClip;
 
 	public ScoreManager scoreManager;
-	public ARSetupInOtherLevels ARSetupInOtherLevels;
 
 
 	public Vector3 rotationVector;
@@ -34,8 +32,6 @@ public class InputHandler : MonoBehaviour
 	private bool isMoving = false;
 
 	public Button submitButton;
-	public Button refreshBtn;
-
 
 	public RobotAudio robotAudio;
 
@@ -43,44 +39,17 @@ public class InputHandler : MonoBehaviour
 
 	public Image BorderEmail;
 
-	[SerializeField] private XROrigin xrOrigin;
+	//[SerializeField] private XROrigin xrOrigin;
 
 	private int StudentId;
 
 
-	private void assingPrefabComponent()
-	{
-		if (!ARInstance.arAlreadyInstantiated && ARInstance.arSetupPrefab == null)
-		{
-			Debug.Log("setup from models");
-			ARSetupInOtherLevels.SetupAR();
 
-			Debug.Log(ARInstance.arAlreadyInstantiated + " AR instance already instantiated.");
-			var robot = FindObjectOfType<SendARFrame>();
-			if (robot != null)
-			{
-				Debug.Log("Assigning SendARFrame component to robot.");
-				robot.Refresh = refreshBtn;
-			}
-
-			var score = FindObjectOfType<ScoreManager>();
-			if (score != null)
-			{
-				/////////////
-				Debug.Log("Assigning ScoreManager component to score.");
-				score.CurrentScore = GameObject.Find("CurrentScore").GetComponent<TMP_Text>();
-			}
-
-		}
-	}
 
 	void Start()
 	{
-		assingPrefabComponent();
-
-
-		if (scoreManager == null)
-			scoreManager = FindObjectOfType<ScoreManager>();
+		//if (scoreManager == null)
+		//	scoreManager = FindObjectOfType<ScoreManager>();
 
 		StudentId = int.Parse(SharedPrefManager.GetData<string>("studentId").ToString());
 
@@ -126,8 +95,7 @@ public class InputHandler : MonoBehaviour
 				int score = SharedPrefManager.GetData<int>("score");
 				scoreManager.UpdateStudentScore(StudentId, score, newScore =>
 				{
-					if (CurrentScore != null)
-						CurrentScore.text = newScore.ToString();
+					CurrentScore.text = newScore.ToString();
 				});
 
 			}
@@ -181,21 +149,39 @@ public class InputHandler : MonoBehaviour
 		{
 			inputField.transform.parent.gameObject.SetActive(false);
 			resultText.text = "";
-			//if (lastModel != null)
-			//{
-			yield return new WaitForSeconds(2);
-			//	lastModel.SetActive(true);
-			//	PlaylastAudio();
-			//}
+			if (lastModel != null)
+			{
+				yield return new WaitForSeconds(2);
+				Debug.Log("last model");
+				lastModel.SetActive(true);
+				//PlaylastAudio();
+				if (models[0].name.ToLower().StartsWith("b"))
+				{
+					StartCoroutine(PlaylastAudio());
+					yield return new WaitForSeconds(6);
+					lastModel.SetActive(false);
+					LoadDialog();
+				}
+				//if (!models[0].name.ToLower().StartsWith("a"))
+				//{
+				//	if (!models[0].name.ToLower().StartsWith("b"))
+				//		yield return new WaitForSeconds(10);
+				//	lastModel.SetActive(false);
+				//}
+
+
+			}
 		}
 	}
 
-	void PlaylastAudio()
+	IEnumerator PlaylastAudio()
 	{
 		if (lastAudio != null)
 		{
-			//yield return new WaitForSeconds(2);
 			audioSource.PlayOneShot(lastAudio);
+			yield return new WaitForSeconds(6);
+			audioSource.Stop();
+
 		}
 
 	}
@@ -310,6 +296,7 @@ public class InputHandler : MonoBehaviour
 						tree.StartAppleFall();
 						yield return new WaitForSeconds(10);
 						treeWithApples.gameObject.SetActive(false);
+						LoadDialog();
 					}
 					else
 					{
@@ -323,95 +310,101 @@ public class InputHandler : MonoBehaviour
 
 
 			}
-			StartCoroutine(DialogScene());
+			//StartCoroutine(DialogScene());
 
 		}
 
 	}
-	IEnumerator DialogScene()
+
+	private void LoadDialog()
 	{
-
-		if (models[0].name.ToLower().StartsWith("b"))
-		{
-			PlaylastAudio();
-			yield return new WaitForSeconds(10);
-			lastModel.SetActive(false);
-		}
-		else
-		{
-
-			if (lastModel != null && !models[0].name.ToLower().StartsWith("a"))
-			{
-				SendARFrame sender = lastModel.GetComponent<SendARFrame>();
-
-				if (sender != null)
-				{
-					GameObject lastObject = null;
-
-					float timeout = 120f;
-					float timer = 0f;
-					float checkInterval = 1f; // seconds
-
-					while (lastObject == null && timer < timeout)
-					{
-						lastObject = sender.GetLastPlacedObject();
-
-						if (lastObject == null)
-						{
-							yield return new WaitForSeconds(checkInterval);
-							timer += checkInterval;
-						}
-					}
-
-					if (lastObject != null)
-					{
-						Debug.Log("✅ Object placed — ready to proceed");
-						PlaylastAudio();
-						yield return new WaitForSeconds(10);
-						lastObject.SetActive(false);
-					}
-					else
-					{
-						Debug.LogWarning("❌ Timed out waiting for object placement");
-					}
-				}
-				else
-				{
-					Debug.LogError("SendARFrame component missing on lastModel!");
-				}
-			}
-		}
-
-
-		setSceneData();
-		//Debug.Log((xrOrigin == null) + "models");
-		//XROriginHolder.xrOrigin = xrOrigin;
-
-		SceneManager.LoadScene("dialog", LoadSceneMode.Additive);
+		SceneManager.LoadScene("dialog");
 	}
+	/// scene data here 
+	//IEnumerator DialogScene()
+	//{
 
-	private void setSceneData()
-	{
-		if (models[0].name.ToLower().StartsWith("a"))
-		{
-			Debug.Log("a here");
-			SceneData.previousSceneName = "A";
-		}
-		else if (models[0].name.ToLower().StartsWith("b"))
-		{
-			SceneData.previousSceneName = "B";
-		}
-		else if (models[0].name.ToLower().StartsWith("c"))
-		{
-			SceneData.previousSceneName = "C";
-		}
-		else if (models[0].name.ToLower().StartsWith("d"))
-		{
-			SceneData.previousSceneName = "D";
-		}
-		else
-			SceneData.previousSceneName = SceneManager.GetActiveScene().name;
-	}
+	//	if (models[0].name.ToLower().StartsWith("b"))
+	//	{
+	//		PlaylastAudio();
+	//		yield return new WaitForSeconds(10);
+	//		lastModel.SetActive(false);
+	//	}
+	//	else
+	//	{
+
+	//		if (lastModel != null && !models[0].name.ToLower().StartsWith("a"))
+	//		{
+	//			SendARFrame sender = lastModel.GetComponent<SendARFrame>();
+
+	//			if (sender != null)
+	//			{
+	//				GameObject lastObject = null;
+
+	//				float timeout = 120f;
+	//				float timer = 0f;
+	//				float checkInterval = 1f; // seconds
+
+	//				while (lastObject == null && timer < timeout)
+	//				{
+	//					lastObject = sender.GetLastPlacedObject();
+
+	//					if (lastObject == null)
+	//					{
+	//						yield return new WaitForSeconds(checkInterval);
+	//						timer += checkInterval;
+	//					}
+	//				}
+
+	//				if (lastObject != null)
+	//				{
+	//					Debug.Log("✅ Object placed — ready to proceed");
+	//					PlaylastAudio();
+	//					yield return new WaitForSeconds(10);
+	//					lastObject.SetActive(false);
+	//				}
+	//				else
+	//				{
+	//					Debug.LogWarning("❌ Timed out waiting for object placement");
+	//				}
+	//			}
+	//			else
+	//			{
+	//				Debug.LogError("SendARFrame component missing on lastModel!");
+	//			}
+	//		}
+	//	}
+
+
+	//	setSceneData();
+	//	//Debug.Log((xrOrigin == null) + "models");
+	//	//XROriginHolder.xrOrigin = xrOrigin;
+
+	//	SceneManager.LoadScene("dialog", LoadSceneMode.Additive);
+	//}
+
+	//private void setSceneData()
+	//{
+	//	if (models[0].name.ToLower().StartsWith("a"))
+	//	{
+	//		Debug.Log("a here");
+	//		SceneData.previousSceneName = "A";
+	//	}
+	//	else if (models[0].name.ToLower().StartsWith("b"))
+	//	{
+	//		SceneData.previousSceneName = "B";
+	//	}
+	//	else if (models[0].name.ToLower().StartsWith("c"))
+	//	{
+	//		SceneData.previousSceneName = "C";
+	//	}
+	//	else if (models[0].name.ToLower().StartsWith("d"))
+	//	{
+	//		SceneData.previousSceneName = "D";
+	//	}
+	//	else
+	//		SceneData.previousSceneName = SceneManager.GetActiveScene().name;
+	//}
 
 
 
@@ -430,3 +423,4 @@ public static class SceneData
 //{
 //	public static XROrigin xrOrigin;
 //}
+
