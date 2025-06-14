@@ -224,7 +224,6 @@ public class SendARFrame : MonoBehaviour
 				{
 					yield return new WaitForSeconds(15f);
 					placedObj.SetActive(false);
-					SceneManager.LoadScene("dialog");
 				}
 
 
@@ -240,6 +239,13 @@ public class SendARFrame : MonoBehaviour
 		}
 	}
 
+
+	private void LoadDialog()
+	{
+		SceneData.previousSceneName = SceneManager.GetActiveScene().name;
+		SceneManager.LoadScene("dialog");
+
+	}
 	void PlaylastAudio()
 	{
 		if (lastAudio != null)

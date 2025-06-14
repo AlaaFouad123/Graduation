@@ -316,7 +316,9 @@ public class InputHandler : MonoBehaviour
 
 	private void LoadDialog()
 	{
+		SceneData.previousSceneName = SceneManager.GetActiveScene().name;
 		SceneManager.LoadScene("dialog");
+
 	}
 	/// scene data here 
 	//IEnumerator DialogScene()

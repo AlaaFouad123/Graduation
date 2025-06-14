@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelsManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class LevelsManager : MonoBehaviour
 
 			for (int i = 1; i < SceneLevels.Count; i++)
 			{
+				SceneLevels[i].GetComponent<Button>().interactable = false;
+
 				var close1 = SceneLevels[i].transform.Find("Lock 1");
 				var close2 = SceneLevels[i].transform.Find("Lock 2");
 				var close3 = SceneLevels[i].transform.Find("Lock 3");
@@ -24,6 +27,7 @@ public class LevelsManager : MonoBehaviour
 				close1.gameObject.SetActive(isColsed);
 				close2.gameObject.SetActive(isColsed);
 				close3.gameObject.SetActive(isColsed);
+				SceneLevels[i].GetComponent<Button>().interactable = true;
 			}
 
 		});
