@@ -69,7 +69,7 @@ public class AuthenticationWithAPI : MonoBehaviour
 
 				EmailError.text = "";
 				PasswordError.text = "";
-				SceneManager.LoadScene("SkipSub");
+				SceneManager.LoadScene("Sub");
 
 
 			}
